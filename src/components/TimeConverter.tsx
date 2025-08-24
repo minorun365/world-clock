@@ -10,8 +10,12 @@ interface TimeConverterProps {
 }
 
 export default function TimeConverter({ selectedTimezone, timezones }: TimeConverterProps) {
-  const [selectedDate, setSelectedDate] = useState('')
-  const [selectedTime, setSelectedTime] = useState('')
+  const now = new Date()
+  const currentDate = format(now, 'yyyy-MM-dd')
+  const currentTime = format(now, 'HH:mm')
+  
+  const [selectedDate, setSelectedDate] = useState(currentDate)
+  const [selectedTime, setSelectedTime] = useState(currentTime)
   const [convertedTimes, setConvertedTimes] = useState<{ [key: string]: string }>({})
 
   const handleConvert = () => {
@@ -50,7 +54,7 @@ export default function TimeConverter({ selectedTimezone, timezones }: TimeConve
   return (
     <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg">
       <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-        時刻変換
+        かんたん日時変換
       </h3>
       
       <div className="mb-4">
