@@ -86,7 +86,7 @@ export default function TimeConverter({ selectedTimezone, timezones }: TimeConve
         disabled={!selectedDate || !selectedTime}
         className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
       >
-        変換
+        他の都市は何時？
       </button>
 
       {Object.keys(convertedTimes).length > 0 && (
