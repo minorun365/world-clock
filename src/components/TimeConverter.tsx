@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { format } from 'date-fns-tz'
-import { Calendar, Clock } from 'lucide-react'
 
 interface TimeConverterProps {
   selectedTimezone: string
@@ -64,27 +63,19 @@ export default function TimeConverter({ selectedTimezone, timezones }: TimeConve
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        <div className="relative">
-          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none z-10" />
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="w-full pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
-            style={{ paddingLeft: '2.5rem' }}
-          />
-        </div>
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
+        />
         
-        <div className="relative">
-          <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none z-10" />
-          <input
-            type="time"
-            value={selectedTime}
-            onChange={(e) => setSelectedTime(e.target.value)}
-            className="w-full pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
-            style={{ paddingLeft: '2.5rem' }}
-          />
-        </div>
+        <input
+          type="time"
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
+        />
       </div>
 
       <button
