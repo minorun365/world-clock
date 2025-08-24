@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { format } from 'date-fns-tz'
+import { format, toZonedTime, fromZonedTime } from 'date-fns-tz'
 
 interface TimeConverterProps {
   selectedTimezone: string
@@ -20,15 +20,18 @@ export default function TimeConverter({ selectedTimezone, timezones }: TimeConve
   const handleConvert = () => {
     if (!selectedDate || !selectedTime) return
 
-    const dateTimeString = `${selectedDate}T${selectedTime}`
-    const sourceDate = new Date(dateTimeString)
+    const dateTimeString = `${selectedDate}T${selectedTime}:00`
+    
+    // 選択された都市のタイムゾーンで入力された日時をUTCに変換
+    const utcDate = fromZonedTime(dateTimeString, selectedTimezone)
     
     const converted: { [key: string]: string } = {}
     
     Object.entries(timezones).forEach(([city, tz]) => {
       if (tz !== selectedTimezone) {
-        const targetDate = new Date(sourceDate.toLocaleString('en-US', { timeZone: selectedTimezone }))
-        const convertedDateTime = format(targetDate, 'yyyy年MM月dd日 HH:mm (EEEE)', { timeZone: tz })
+        // UTCから各都市のタイムゾーンに変換
+        const zonedDate = toZonedTime(utcDate, tz)
+        const convertedDateTime = format(zonedDate, 'yyyy年MM月dd日 HH:mm (EEEE)', { timeZone: tz })
         const japaneseDayOfWeek = convertedDateTime.replace(
           /Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/,
           (match) => ({
