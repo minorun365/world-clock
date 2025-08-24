@@ -30,28 +30,28 @@ export default function Clock({ timezone, cityName, currentTime, isSelected, onS
 
   return (
     <div
-      className={`p-6 rounded-lg shadow-lg cursor-pointer transition-all ${
+      className={`p-2 sm:p-4 md:p-6 rounded-lg shadow-lg cursor-pointer transition-all ${
         isSelected
           ? 'bg-blue-50 dark:bg-blue-900/20 ring-2 ring-blue-500'
           : 'bg-white dark:bg-gray-800 hover:shadow-xl'
       }`}
       onClick={onSelect}
     >
-      <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-100">
+      <h2 className="text-sm sm:text-lg md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-center text-gray-800 dark:text-gray-100">
         {cityName}
       </h2>
       
-      <div className="flex flex-col items-center space-y-4">
+      <div className="flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-4">
         <AnalogClock time={zonedTime} />
         
         <div className="text-center">
-          <div className="text-3xl font-mono font-bold text-gray-900 dark:text-gray-100">
+          <div className="text-base sm:text-2xl md:text-3xl font-mono font-bold text-gray-900 dark:text-gray-100">
             {formattedTime}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2">
             {formattedDate}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {japaneseDayOfWeek}
           </div>
         </div>

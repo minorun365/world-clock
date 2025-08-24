@@ -7,7 +7,7 @@ interface AnalogClockProps {
   size?: number
 }
 
-export default function AnalogClock({ time, size = 120 }: AnalogClockProps) {
+export default function AnalogClock({ time, size = 80 }: AnalogClockProps) {
   const hours = time.getHours()
   const minutes = time.getMinutes()
   const seconds = time.getSeconds()
@@ -18,10 +18,8 @@ export default function AnalogClock({ time, size = 120 }: AnalogClockProps) {
 
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 200 200"
-      className="transform -rotate-90"
+      className="transform -rotate-90 w-full h-auto max-w-[60px] sm:max-w-[80px] md:max-w-[100px] lg:max-w-[120px]"
     >
       <circle
         cx="100"

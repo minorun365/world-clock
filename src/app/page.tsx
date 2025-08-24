@@ -29,7 +29,7 @@ export default function Home() {
           みのるん世界時計
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-8">
           {Object.entries(timezones).map(([city, timezone]) => (
             <Clock
               key={city}
